@@ -1,38 +1,26 @@
-// Motor driver pins
-const int IN1 = 8;
-const int IN2 = 9;
-const int ENA = 10; // PWM pin for motor speed control
+# Arduino Bridge Lift Project
 
-void setup() {
-  // Set motor pins as output
-  pinMode(IN1, OUTPUT);
-  pinMode(IN2, OUTPUT);
-  pinMode(ENA, OUTPUT);
+This project uses an Arduino and DC motor to lift and lower a miniature bridge via a spider pulley mechanism.
 
-  // Motor off at start
-  digitalWrite(IN1, LOW);
-  digitalWrite(IN2, LOW);
-  analogWrite(ENA, 0); 
-}
+## 🔧 Hardware Used
+- Arduino UNO
+- L298N Motor Driver Module
+- DC Motor
+- Pulley system
+- External Power Supply (9V–12V)
+- Jumper wires
 
-void loop() {
-  // Clockwise rotation - Lift the bridge
-  digitalWrite(IN1, HIGH);
-  digitalWrite(IN2, LOW);
-  analogWrite(ENA, 200); // Speed (0-255)
-  delay(3000); // Motor runs for 3 seconds
+## ⚙️ Features
+- Clockwise motor rotation to lift the bridge
+- Anticlockwise rotation to lower it
+- Time-based control using delays
 
-  // Stop the motor
-  analogWrite(ENA, 0);
-  delay(1000); // Wait for 1 second
+## 📂 Code
+The `bridge_lift.ino` file contains the code for motor direction and speed control.
 
-  // Anticlockwise rotation - Lower the bridge
-  digitalWrite(IN1, LOW);
-  digitalWrite(IN2, HIGH);
-  analogWrite(ENA, 200); // Same speed
-  delay(3000); // Motor runs for 3 seconds
+## 🖼️ Project Description
+The bridge is lifted via strings connected to various points, held by a pulley structure. Controlled through L298N and Arduino.
 
-  // Stop the motor again
-  analogWrite(ENA, 0);
-  delay(1000); // Wait before repeating
-}
+## 💡 To Do
+- Add push-button control
+- Add limit switches for safety
